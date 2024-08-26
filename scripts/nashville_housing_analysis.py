@@ -1,14 +1,17 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
-# Load the data (assuming you've exported the views to CSV files)
-price_trends = pd.read_csv('vw_PriceTrends.csv')
-property_chars = pd.read_csv('vw_PropertyCharacteristics.csv')
-location_analysis = pd.read_csv('vw_LocationAnalysis.csv')
-age_value = pd.read_csv('vw_AgeValueRelation.csv')
-vacant_sales = pd.read_csv('vw_VacantPropertySales.csv')
-price_comparison = pd.read_csv('vw_PropertyPriceComparison.csv')
+BASE_PATH = 'data/processed/views'
+
+# Load the data
+price_trends = pd.read_csv(os.path.join(BASE_PATH, 'vw_PriceTrends.csv'))
+property_chars = pd.read_csv(os.path.join(BASE_PATH, 'vw_PropertyCharacteristics.csv'))
+location_analysis = pd.read_csv(os.path.join(BASE_PATH, 'vw_LocationAnalysis.csv'))
+age_value = pd.read_csv(os.path.join(BASE_PATH, 'vw_AgeValueRelation.csv'))
+vacant_sales = pd.read_csv(os.path.join(BASE_PATH, 'vw_VacantPropertySales.csv'))
+price_comparison = pd.read_csv(os.path.join(BASE_PATH, 'vw_PropertyPriceComparison.csv'))
 
 # 1. Price Trends Analysis
 price_trends['Date'] = pd.to_datetime(price_trends[['SaleYear', 'SaleMonth']].assign(day=1))
